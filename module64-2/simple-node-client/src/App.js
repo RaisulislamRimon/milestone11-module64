@@ -25,7 +25,12 @@ const App = () => {
       body: JSON.stringify(user),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+        // setUsers(data);
+        const newUser = [...users, data];
+        setUsers(newUser);
+      })
       .catch((error) => console.error(error));
     form.reset();
   };
