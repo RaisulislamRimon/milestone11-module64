@@ -25,6 +25,12 @@ app.post("/users", (req, res) => {
   console.log("post api called");
   console.log(req.body);
   // res.send("post api called response send");
+  const user = req.body;
+  user.id = users.length + 1;
+  users.push(user);
+  console.log(user);
+  console.log(req.body);
+  res.send(user);
 });
 
 app.listen(port, () => {
