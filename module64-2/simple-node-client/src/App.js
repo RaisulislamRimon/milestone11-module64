@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./App.css";
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -7,7 +8,16 @@ const App = () => {
       .then((response) => response.json())
       .then((data) => setUsers(data));
   }, []);
-  return <div>Users : {users.length}</div>;
+  return (
+    <div className="App">
+      <h2>Users : {users.length}</h2>
+      <div>
+        {users.map((user) => (
+          <p key={user.id}>{user.name}</p>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default App;
