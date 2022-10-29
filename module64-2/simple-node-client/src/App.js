@@ -8,10 +8,22 @@ const App = () => {
       .then((response) => response.json())
       .then((data) => setUsers(data));
   }, []);
+
+  const handleAddUser = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const user = { name, email };
+    console.log(name, email);
+    console.log(user);
+    form.reset();
+  };
+
   return (
     <div className="App">
       <h2>User Form</h2>
-      <form>
+      <form onSubmit={handleAddUser}>
         <label htmlFor="name">Name : </label>
         <input type="text" name="name" id="name" placeholder="name" />
         <br />
