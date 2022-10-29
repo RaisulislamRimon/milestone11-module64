@@ -10,7 +10,17 @@ const App = () => {
   }, []);
   return (
     <div className="App">
-      <h2>Users : {users.length}</h2>
+      <h2>User Form</h2>
+      <form>
+        <label htmlFor="name">Name : </label>
+        <input type="text" name="name" id="name" placeholder="name" />
+        <br />
+        <label htmlFor="email">Email : </label>
+        <input type="email" name="email" id="email" placeholder="email" />
+        <br />
+        <input type="submit" value="Add user" />
+      </form>
+      <h3>Users : {users.length}</h3>
       <div>
         {users.map((user) => (
           <p key={user.id}>{user.name}</p>
