@@ -18,7 +18,7 @@ app.get("/users", (req, res) => {
   res.send(users);
 });
 
-app.get("/users", (req, res) => {
+app.post("/users", (req, res) => {
   console.log("post api called");
   res.send("post api called response send");
 });
