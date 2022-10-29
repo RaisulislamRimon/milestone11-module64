@@ -6,6 +6,8 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+const { MongoClient, ServerApiVersion } = require("mongodb");
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
@@ -16,6 +18,23 @@ const users = [
   { id: 3, name: "John Smith", email: "johnsmith@gmail.com" },
   { id: 4, name: "Mr Anderson", email: "anderson@gmail.com" },
 ];
+
+// username : dbUser1
+// password : KAaPKeGRVYXNtZcD
+
+const uri =
+  "mongodb+srv://dbUser1:KAaPKeGRVYXNtZcD@cluster0.q2puyhe.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverApi: ServerApiVersion.v1,
+});
+client.connect((err) => {
+  const collection = client.db("simpleNode").collection("users");
+  // perform actions on the collection object
+  console.log("database connected");
+  client.close();
+});
 
 app.get("/users", (req, res) => {
   if (req.query.name) {
