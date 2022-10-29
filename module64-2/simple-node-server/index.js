@@ -19,6 +19,9 @@ const users = [
 
 app.get("/users", (req, res) => {
   if (req.query.name) {
+    // console.log(req);
+    // console.log(req.query);
+    // console.log(req.query.name);
     const search = req.query.name;
     const filtered = users.filter(
       (usr) => usr.name.toLowerCase().indexOf(search) >= 0
