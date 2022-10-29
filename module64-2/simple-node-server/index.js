@@ -20,7 +20,8 @@ app.get("/users", (req, res) => {
 
 app.post("/users", (req, res) => {
   console.log("post api called");
-  res.send("post api called response send");
+  console.log(req.body);
+  // res.send("post api called response send");
 });
 
 app.listen(port, () => {
