@@ -29,12 +29,24 @@ const client = new MongoClient(uri, {
   useUnifiedTopology: true,
   serverApi: ServerApiVersion.v1,
 });
-client.connect((err) => {
-  const collection = client.db("simpleNode").collection("users");
-  // perform actions on the collection object
-  console.log("database connected");
-  client.close();
-});
+
+async function run() {
+  try {
+    const userCollection = client.db("simpleNode").collection("users");
+    const user = { name: "mahiya mahi", email: "mahi@gmail.com" };
+    const result = await userCollection.insertOne(user);
+    console.log(result);
+  } catch {}
+}
+
+run().catch((error) => console.log(error));
+
+// client.connect((err) => {
+//   const collection = client.db("simpleNode").collection("users");
+//   // perform actions on the collection object
+//   console.log("database connected");
+//   client.close();
+// });
 
 app.get("/users", (req, res) => {
   if (req.query.name) {
